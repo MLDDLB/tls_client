@@ -25,7 +25,9 @@ def parse_args():
 
 def main():
     def make_http(method="GET", path="/", headers=[], data=""):
-        headers_formatted = "\r\n".join(headers) if headers else ""
+        headers_formatted = ""
+        if headers:
+            headers_formatted = "\r\n".join(headers)
         http_request = f"{method} {path} HTTP/1.1\r\n{headers_formatted}\r\n{data}\r\n\r\n"
         return http_request
     
