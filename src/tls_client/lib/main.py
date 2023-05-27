@@ -12,7 +12,7 @@ def parse_args():
 
     parser.add_argument("--host", type=str)
     parser.add_argument("--port", type=int, default=443)
-    parser.add_argument("--config", type=str, default=Path.cwd()/"tls_client"/"config"/"config.yaml")
+    parser.add_argument("--config", type=str, default=Path.cwd()/"src"/"tls_client"/"config"/"config.yaml")
     parser.add_argument("--version", type=int, default=2)
     
     parser.add_argument("-M", type=str, default="GET")
