@@ -25,14 +25,14 @@ def parse_args():
 
 def main():
     def make_http(method="GET", path="/", headers=[], data=""):
-        headers_formatted = "\r\n".join(headers)
+        headers_formatted = "\r\n".join(headers) if headers else ""
         http_request = f"{method} {path} HTTP/1.1\r\n{headers_formatted}\r\n{data}\r\n\r\n"
         return http_request
     
     args = parse_args()
-    print(args)
+
     http_msg = make_http(method=args.M, path=args.P, headers=args.H, data=args.D)
-    print(http_msg)
+
     with open(args.config) as f:
         config_dict = yaml.safe_load(f)
 
