@@ -1,0 +1,8 @@
+Metadata-Version: 2.1
+Name: tls-client
+Version: 0.0.1
+Summary: TLS client, but not that good
+Author: mlddlb
+Author-email: mlddlb@yandex-team.ru
+License: MIT
+License-File: LICENSE.txt
