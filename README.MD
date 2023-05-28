@@ -34,6 +34,20 @@
 
 1. Cоздать конфиг в формате как в примере
 2. Во время запуска указать путь до него
-3. python3 -m tls_client <options>
+3. python3 -m tls_client options
 
-##
+### Опции
+
+1. --host -- Кому отправить сообщение
+2. --port -- На какой порт отправить сообщение
+3. --config -- путь до конфигурационного файла
+4. --version -- Используемая версия TLS
+5. --cipher -- Используемый для соединения шифронабор
+6. -M -- HTTP метод
+7. -H -- HTTP заголовки
+8. -D -- Дата для не GET запросов
+9. -P -- путь на хосте
+
+### Пример команды
+
+python3 -m tls_client --host example.com --port 443 --version 3 --cipher AES256-GCM-SHA384 -H "Host: example.com" "Connection: keep-alive" "Cache-Control: max-age=0" "Upgrade-Insecure-Requests: 1" "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 YaBrowser/23.3.3.769 Yowser/2.5 Safari/537.36\r\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7" "Accept-Encoding: gzip, deflate" "Accept-Language: ru,en;q=0.9,fr;q=0.8" "If-None-Match: 3147526947+gzip"
