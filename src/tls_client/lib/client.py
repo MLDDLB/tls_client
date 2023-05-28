@@ -85,7 +85,7 @@ class TLSClient:
         self,
         timeout=None,
         version=2,
-        ciphers=None,
+        cipher=None,
         elyptic_curve=None,
         use_client_certificate=True,
     ):
@@ -97,9 +97,10 @@ class TLSClient:
 
         context = OpenSSL.SSL.Context(method)
 
-        if ciphers and not (set(ciphers) - self.ciphers):
-            context.set_cipher_list(ciphers)
-        elif not ciphers:
+        
+        if cipher and cipher.encode() in self.ciphers:
+            context.set_cipher_list(cipher.encode())
+        elif not cipher:
             context.set_cipher_list(b":".join(list(self.ciphers)))
         else:
             raise ValueError(
@@ -147,7 +148,7 @@ class TLSClient:
         port,
         timeout=None,
         version=2,
-        ciphers=None,
+        cipher=None,
         elyptic_curve=None,
         use_client_certificate=True,
         reuse_session=True,
@@ -157,7 +158,7 @@ class TLSClient:
                 context = self.make_context(
                     timeout=timeout,
                     version=version,
-                    ciphers=ciphers,
+                    cipher=cipher,
                     elyptic_curve=elyptic_curve,
                     use_client_certificate=use_client_certificate,
                 )

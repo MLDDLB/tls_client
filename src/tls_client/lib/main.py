@@ -14,6 +14,7 @@ def parse_args():
     parser.add_argument("--port", type=int, default=443)
     parser.add_argument("--config", type=str, default=Path.cwd()/"src"/"tls_client"/"config"/"config.yaml")
     parser.add_argument("--version", type=int, default=2)
+    parser.add_argument("--cipher", type=str)
     
     parser.add_argument("-M", type=str, default="GET")
     parser.add_argument("-P", type=str, default="/")
@@ -40,6 +41,6 @@ def main():
 
     client = TLSClient()
     client.init_from_config(config_dict)
-    with client.connect(args.host, args.port, version=args.version):
+    with client.connect(args.host, args.port, version=args.version, cipher=args.cipher):
         client.send(http_msg.encode("UTF-8"))
         print(client.recv())
